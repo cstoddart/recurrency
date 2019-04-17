@@ -1,7 +1,18 @@
-import React from 'react';
-import { WebView } from 'react-native';
-import styled from 'styled-components';
+import React, { Component } from 'react';
+import axios from 'axios';
+import { WebView, Text, Switch } from 'react-native';
+import {
+  NativeRouter,
+  Route,
+  Redirect,
+} from 'react-router-native';
+import { SecureStore } from 'expo';
 
+import { context, initialState } from './context';
+import { firebaseFunctionUrl } from './keys';
+import { login } from './services/firebase';
+import { Login } from './components/login';
+import { Home } from './components/home';
 import {
   Container,
   Title,
@@ -11,53 +22,101 @@ import {
   AccountType,
 } from './appStyles';
 
-const PLAID_PUBLIC_KEY= '56080b252cdeed44550aa6a24517d9';
-const PLAID_ENV = 'sandbox';
-const PLAID_PRODUCT = 'auth,transactions';
+const PrivateRoute = ({ loggedIn }) => (
+  loggedIn
+    ? <></>
+    : <Redirect to="/" />
+);
 
 export default class App extends React.Component {
   state = {
-    isConnected: false,
-    bankName: '',
-    accounts: [{
-      name: '',
-      lastFour: '',
-      type: '',
-    }],
+    ...initialState,
+    updateContext: (context) => this.setState((state) => ({
+      ...state,
+      context,
+    })),
   };
 
-  handleMessage = (event) => {
-    const data = JSON.parse(event.nativeEvent.data);
-    console.log('DATA', data);
-    const isConnected = data.action && data.action.includes('::connected');
-    if (isConnected) this.setState({
-      bankName: data.metadata.institution.name,
-      accounts: data.metadata.accounts.map((account) => ({
-        name: account.name,
-        lastFour: account.mask,
-        type: account.subtype, 
-      })),
-    });
-    this.setState({ isConnected });
-  }
+  // handleMessage = async (event) => {
+  //   const { action, metadata } = JSON.parse(event.nativeEvent.data);
+  //   const isConnected = action && action.includes('::connected');
+  //   if (isConnected) {
+  //     this.setState({
+  //       bankName: metadata.institution.name,
+  //       accounts: metadata.accounts.map((account) => ({
+  //         name: account.name,
+  //         lastFour: account.mask,
+  //         type: account.subtype,
+  //       })),
+  //     });
+
+  //     const accessTokenData = {
+  //       publicToken: metadata.public_token,
+  //     };
+  //     const accessTokenResult = await axios.request({
+  //       url: `${firebaseFunctionUrl}/get-access-token`,
+  //       method: 'post',
+  //       headers: {
+  //         'content-type': 'application/json',
+  //       },
+  //       data: JSON.stringify(accessTokenData),
+  //     }).catch(console.log);
+  //     console.log('TOKEN RESULT', accessTokenResult.data);
+  //     const { accessToken } = accessTokenResult.data;
+
+  //     const transactionsData = {
+  //       accessToken,
+  //     };
+  //     const transactionsResult = await axios.request({
+  //       url: `${firebaseFunctionUrl}/get-transactions`,
+  //       method: 'post',
+  //       headers: {
+  //         'content-type': 'application/json',
+  //       },
+  //       data: JSON.stringify(transactionsData),
+  //     }).catch(console.log);
+  //     const transactions = transactionsResult.data;
+  //   }
+  //   this.setState({ isConnected });
+  // }
+
+  // componentDidMount() {
+  //   login();
+  // }
 
   render() {
-    return this.state.isConnected
-      ? <Container>
-        <Title>{this.state.bankName}</Title>
-        {this.state.accounts.map((account) => (
-          <Account key={account.name}>
-            <AccountName>{account.name}</AccountName>
-            <AccountNumbers>{account.lastFour}</AccountNumbers>
-            <AccountType>{account.type}</AccountType>
-          </Account>                                                         
-        ))}
-      </Container>
-      : <WebView
-        source={{
-          uri: `https://cdn.plaid.com/link/v2/stable/link.html?key=${PLAID_PUBLIC_KEY}&env=${PLAID_ENV}&product=${PLAID_PRODUCT}&clientName=Recurrency&isWebView=true&isMobile=true&webhook=http://google.com`,
-        }}
-        onMessage={this.handleMessage}
-      />;
+    console.log('STATE', this.state);
+    const loggedIn = true;
+    return (
+      <NativeRouter>
+        <context.Provider value={this.state}>
+          <Route exact path="/" render={() => (
+            loggedIn 
+              ? <Home />
+              : <Redirect to="/login" />
+          )}/>
+          {/* <PrivateRoute path="/home" component={Home} loggedIn={false} /> */}
+          <Route path="/login" render={() => <Login />} />
+          {/* </Switch> */}
+          {/* {this.state.isConnected
+            ? <Container>
+              <Title>{this.state.bankName}</Title>
+              {this.state.accounts.map((account) => (
+                <Account key={account.name}>
+                  <AccountName>{account.name}</AccountName>
+                  <AccountNumbers>{account.lastFour}</AccountNumbers>
+                  <AccountType>{account.type}</AccountType>
+                </Account>
+              ))}
+            </Container>
+            : <WebView
+              source={{
+                uri: `https://cdn.plaid.com/link/v2/stable/link.html?key=${PLAID_PUBLIC_KEY}&env=${PLAID_ENV}&product=${PLAID_PRODUCT}&clientName=Recurrency&isWebView=true&isMobile=true&webhook=http://google.com`,
+              }}
+              onMessage={this.handleMessage}
+            />} */}
+        </context.Provider>
+      </NativeRouter>
+    );
   }
 }
