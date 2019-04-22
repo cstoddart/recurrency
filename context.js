@@ -13,4 +13,10 @@ export const initialState = {
     lastFour: '',
     type: '',
   }],
+  transactions: [{
+    amount: 0,
+    categories: [''],
+    date: '',
+    name: '',
+  }],
 };

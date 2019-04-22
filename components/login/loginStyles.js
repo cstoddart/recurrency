@@ -10,3 +10,8 @@ export const StyledLogin = styled.ImageBackground.attrs({
   justify-content: space-between;
   align-items: center;
 `;
+
+export const LoginButton = styled.TouchableOpacity`
+  background-color: white;
+  border-radius: 50;
+`;

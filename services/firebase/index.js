@@ -20,3 +20,19 @@ export function login() {
   return firebaseApp.auth().signInWithEmailAndPassword('test@test.com', 'testtest')
     .catch(console.error);
 }
+
+export function loginWithGoogle() {
+  firebase.auth().getRedirectResult().then(function (result) {
+    if (result.credential) {
+      const token = result.credential.accessToken;
+      console.log('TOKEN', token);
+    }
+    const user = result.user;
+    console.log('USER', user);
+  });
+
+  const provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('profile');
+  provider.addScope('email');
+  return firebase.auth().signInWithRedirect(provider);
+}

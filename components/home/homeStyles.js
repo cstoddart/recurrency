@@ -11,8 +11,3 @@ export const StyledHome = styled.ImageBackground.attrs({
   justify-content: space-between;
   align-items: center;
 `;
-
-export const HomeText = styled.Text`
-  color: black;
-  font-size: 50;
-`;
