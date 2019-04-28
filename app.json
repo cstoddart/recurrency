@@ -27,7 +27,7 @@
       "bundleIdentifier": "com.crease.recurrency"
     },
     "android": {
-      "package": "com.yourcompany.yourappname"
+      "package": "com.crease.company"
     },
     "androidStatusBar": {
       "barStyle": "dark-content",

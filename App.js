@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { WebView, Text, Switch } from 'react-native';
 import {
   NativeRouter,
   Route,
-  Redirect,
+  Switch,
 } from 'react-router-native';
 
 import { context, initialState } from './context';
 import { Login } from './components/login';
 import { Home } from './components/home';
+import { Subscriptions } from './components/subscriptions';
+import { Transactions } from './components/transactions';
+import { Search } from './components/search';
 
 const RouteWithContext = ({ path, component: Component }) => (
   <Route path={path} render={(props) => (
@@ -33,8 +34,13 @@ export default class App extends Component {
     return (
       <NativeRouter>
         <context.Provider value={this.state}>
-          <RouteWithContext path="/" component={Home} />
-          <RouteWithContext path="/login" component={Login} />
+          <Switch>
+            <RouteWithContext exact path="/" component={Home} />
+            <RouteWithContext path="/login" component={Login} />
+            <RouteWithContext path="/subscriptions" component={Subscriptions} />
+            <RouteWithContext path="/transactions" component={Transactions} />
+            <RouteWithContext path="/search" component={Search} />
+          </Switch>
         </context.Provider>
       </NativeRouter>
     );

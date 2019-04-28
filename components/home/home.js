@@ -23,6 +23,10 @@ export class Home extends Component {
       const accessToken = await getPlaidAccessToken({ publicToken: metadata.public_token });
       const transactions = await getPlaidTransactions({ accessToken });
       this.props.context.updateContext({
+        user: {
+          loggedIn: true,
+          plaidAccessToken: accessToken,
+        },
         bankName: metadata.institution.name,
         accounts: metadata.accounts.map((account) => ({
           name: account.name,
@@ -36,6 +40,7 @@ export class Home extends Component {
           name: transaction.name,
         })),
       });
+      this.props.history.push('/subscriptions');
     }
     // this.setState({ isConnected });
   }
