@@ -1,1 +1,4 @@
-export { login, loginWithGoogle } from './authentication';
+export {
+  createUser,
+  loginWithFirebase,
+} from './authentication';

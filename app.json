@@ -22,12 +22,26 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "facebookScheme": "fb2550551785171759",
+    "facebookAppId": "2550551785171759",
+    "facebookDisplayName": "Recurrency",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.crease.recurrency"
+      "bundleIdentifier": "com.crease.recurrency",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.397641251739-2aa2ifejln4800f3e28j02fgu1nkak4u"
+        }
+      }
     },
     "android": {
-      "package": "com.crease.company"
+      "package": "com.crease.recurrency",
+      "googleServicesFile": "./googleServices.json",
+      "config": {
+        "googleSignIn": {
+          "certificateHash": "13C7614C60D40B5D94E2854DF20992D25322A4A2"
+        }
+      }
     },
     "androidStatusBar": {
       "barStyle": "dark-content",
