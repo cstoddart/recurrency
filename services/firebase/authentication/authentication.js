@@ -1,7 +1,8 @@
+import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
 import { firebaseApp } from '../'
-import { findUserById } from '../database';
+import { getUserById } from '../database';
 
 const firebaseAuth = firebaseApp.auth();
 
@@ -9,7 +10,7 @@ export function loginWithFirebase({ email = 'test@test.com', password = 'testtes
   return new Promise((resolve, reject) => {
     firebaseAuth.onAuthStateChanged(async function (firebaseUser) {
       if (firebaseUser) {
-        const user = await findUserById({ id: firebaseUser.uid, type: 'firebase' });
+        const user = await getUserById({ id: firebaseUser.uid, type: 'firebase' });
         resolve(user);
         redirect();
       }

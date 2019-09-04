@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AsyncStorage } from 'react-native';
 
 import { loginWithFirebase } from '../../services/firebase/authentication';
 import { loginWithFacebook } from '../../services/facebook';
@@ -22,18 +23,36 @@ import {
   LoginText,
   Bold,
 } from './loginStyles';
+import { getCurrentUser } from 'expo-google-sign-in';
+import { getUser } from '../../services/firebase/database';
 
 export class Login extends Component {
-  handleLogin = (loginMethod) => async () => {
+  async componentDidMount() {
     const { context, history } = this.props;
-    const user = await loginMethod();
-    console.log('USER', user);
+    const userId = await AsyncStorage.getItem('userId');
+    console.log('USERID', userId);
+    if (!userId) return;
+    const user = await getUser(userId);
     context.updateContext({ user: {
+      id: userId,
       loggedIn: true,
-      plaidAccessToken: existingUser.plaidAccessToken || '',
+      plaidAccessToken: user.plaidAccessToken || '',
     }});
     history.push('/');
   }
+
+  handleLogin = (loginMethod) => async () => {
+    const { context, history } = this.props;
+    const user = await loginMethod();
+    console.log('YOUSER', user);
+    AsyncStorage.setItem('userId', user.id);
+    context.updateContext({ user: {
+      id: user.id, // this line needs testing
+      loggedIn: true,
+      plaidAccessToken: user.plaidAccessToken || '',
+    }});
+    history.push('/');
+  };
 
   render() {
     return (

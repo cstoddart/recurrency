@@ -1,27 +1,25 @@
-import { Facebook } from 'expo';
+import * as Facebook from 'expo-facebook';
 
-import { findUserById, addUser } from '../firebase/database';
+import { getUserById, addUser } from '../firebase/database';
 
 export async function loginWithFacebook() {
   try {
     const facebookAppId = '2550551785171759';
-    const {
-      type,
-      token,
-      expires,
-      permissions,
-      declinedPermissions,
-    } = await Facebook.logInWithReadPermissionsAsync(facebookAppId, {
+    const { type, token } = await Facebook.logInWithReadPermissionsAsync(facebookAppId, {
       permissions: ['public_profile'],
     });
     if (type === 'success') {
       const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
       const facebookUser = await response.json();
-      const existingUser = await findUserById({ id: facebookUser.id, type: 'facebook' });
+      console.log('FACEBOOK USER', facebookUser);
+      const existingUser = await getUserById({ id: facebookUser.id, type: 'facebook' });
       if (existingUser) {
         return existingUser;
       }
-      return addUser({ facebookId: facebookUser.id });
+      return addUser({
+        facebookId: facebookUser.id,
+        name: facebookUser.name,
+      });
     } 
     return undefined;
   } catch ({ message }) {

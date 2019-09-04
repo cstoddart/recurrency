@@ -1,5 +1,6 @@
 export {
   addUser,
-  findUserById,
+  getUser,
+  getUserById,
   updateUser,
 } from './database';

@@ -10,20 +10,50 @@ import {
 import {
   StyledHome,
 } from './homeStyles';
+import { updateUser } from '../../services/firebase/database';
 
 export class Home extends Component {
   state = {
     isConnected: false,
   };
 
+  async componentDidMount() {
+    const { context, history } = this.props;
+    if (!context.user.plaidAccessToken) return;
+    const transactions = await getPlaidTransactions({ accessToken: context.user.plaidAccessToken });
+      context.updateContext({
+        // bankName: metadata.institution.name,
+        // accounts: metadata.accounts.map((account) => ({
+        //   name: account.name,
+        //   lastFour: account.mask,
+        //   type: account.subtype,
+        // })),
+        transactions: transactions.map((transaction) => ({
+          amount: transaction.amount,
+          categories: transaction.category,
+          date: transaction.date,
+          name: transaction.name,
+        })),
+      });
+      history.push('/subscriptions');
+  }
+
   handleMessage = async (event) => {
+    const { context, history } = this.props;
     const { action, metadata } = JSON.parse(event.nativeEvent.data);
     const isConnected = action && action.includes('::connected');
     if (isConnected) {
-      const accessToken = await getPlaidAccessToken({ publicToken: metadata.public_token });
-      updateUser()
-      const transactions = await getPlaidTransactions({ accessToken });
-      this.props.context.updateContext({
+      const plaidAccessToken = await getPlaidAccessToken({ publicToken: metadata.public_token });
+      updateUser({
+        id: context.user.id,
+        plaidAccessToken,
+      });
+      const transactions = await getPlaidTransactions({ accessToken: plaidAccessToken });
+      context.updateContext({
+        user: {
+          ...context.user,
+          plaidAccessToken,
+        },
         bankName: metadata.institution.name,
         accounts: metadata.accounts.map((account) => ({
           name: account.name,
@@ -37,7 +67,7 @@ export class Home extends Component {
           name: transaction.name,
         })),
       });
-      this.props.history.push('/subscriptions');
+      history.push('/subscriptions');
     }
   }
 

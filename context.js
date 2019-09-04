@@ -11,6 +11,7 @@ const transaction = {
 
 export const initialState = {
   user: {
+    id: '',
     loggedIn: false,
     plaidAccessToken: '',
   },
