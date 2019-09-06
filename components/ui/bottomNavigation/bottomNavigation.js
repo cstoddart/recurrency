@@ -2,12 +2,12 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { Link } from 'react-router-native';
 
-import { StyledNavigation } from './navigationStyles';
+import { StyledBottomNavigation } from './bottomNavigationStyles';
 
-export const Navigation = () => (
-  <StyledNavigation>
+export const BottomNavigation = () => (
+  <StyledBottomNavigation>
     <Link to="/subscriptions"><Text>Subscriptions</Text></Link>
     <Link to="/transactions"><Text>Transactions</Text></Link>
     <Link to="/search"><Text>Search</Text></Link>
-  </StyledNavigation>
+  </StyledBottomNavigation>
 );

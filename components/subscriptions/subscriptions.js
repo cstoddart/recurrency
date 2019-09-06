@@ -4,7 +4,11 @@ import {
   Text,
 } from 'react-native';
 
-import { Navigation } from '../ui';
+import {
+  BottomNavigation,
+  TopNavigation,
+  PageContainer,
+} from '../ui';
 import { identifySubscriptions } from '../../operations';
 
 export class Subscriptions extends Component {
@@ -16,13 +20,14 @@ export class Subscriptions extends Component {
   render() {
     const { subscriptions } = this.props.context;
     return (
-      <View>
+      <PageContainer>
+        <TopNavigation />
         <Text>Subscriptions</Text>
         {subscriptions.map((subscription) => (
           <Text key={subscription.name}>{subscription.name}</Text>
         ))}
-        <Navigation />
-      </View>
+        <BottomNavigation />
+      </PageContainer>
     );
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { YellowBox } from 'react-native';
 import {
   NativeRouter,
   Route,
@@ -11,6 +12,17 @@ import { Home } from './components/home';
 import { Subscriptions } from './components/subscriptions';
 import { Transactions } from './components/transactions';
 import { Search } from './components/search';
+import { Settings } from './components/settings';
+
+/* -- Needed to supress annoying warning -- */
+YellowBox.ignoreWarnings(['Setting a timer']);
+const consoleClone = { ...console };
+console.warn = (message) => {
+  if (message.indexOf('Setting a timer') <= -1) {
+    consoleClone.warn(message);
+  }
+};
+/* ---- */
 
 const RouteWithContext = ({ path, component: Component }) => (
   <Route path={path} render={(props) => (
@@ -40,6 +52,7 @@ export default class App extends Component {
             <RouteWithContext path="/subscriptions" component={Subscriptions} />
             <RouteWithContext path="/transactions" component={Transactions} />
             <RouteWithContext path="/search" component={Search} />
+            <RouteWithContext path="/settings" component={Settings} />
           </Switch>
         </context.Provider>
       </NativeRouter>

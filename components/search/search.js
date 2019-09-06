@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
+import { View, Text } from 'react-native';
 
-import { Navigation } from '../ui';
+import { BottomNavigation, TopNavigation } from '../ui';
 
 export class Search extends Component {
   render() {
     return (
       <View>
+        <TopNavigation />
         <Text>Search</Text>
-        <Navigation />
+        <BottomNavigation />
       </View>
     );
   }

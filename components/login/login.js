@@ -30,7 +30,6 @@ export class Login extends Component {
   async componentDidMount() {
     const { context, history } = this.props;
     const userId = await AsyncStorage.getItem('userId');
-    console.log('USERID', userId);
     if (!userId) return;
     const user = await getUser(userId);
     context.updateContext({ user: {
@@ -44,10 +43,9 @@ export class Login extends Component {
   handleLogin = (loginMethod) => async () => {
     const { context, history } = this.props;
     const user = await loginMethod();
-    console.log('YOUSER', user);
     AsyncStorage.setItem('userId', user.id);
     context.updateContext({ user: {
-      id: user.id, // this line needs testing
+      id: user.id,
       loggedIn: true,
       plaidAccessToken: user.plaidAccessToken || '',
     }});
