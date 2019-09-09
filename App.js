@@ -24,7 +24,6 @@ console.warn = (message) => {
     consoleClone.warn(message);
   }
 };
-/* ---- */
 
 const RouteWithContext = ({ path, component: Component }) => (
   <Route path={path} render={(props) => (

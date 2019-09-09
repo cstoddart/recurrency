@@ -10,7 +10,6 @@ export const Card = styled.View`
   margin-right: 15px;
   margin-bottom: 10px;
   elevation: 3;
-  display: flex;
   flex-direction: row;
   align-items: center;
 `;

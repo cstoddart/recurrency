@@ -21,8 +21,8 @@ const client = new plaid.Client(
 
 app.use(cors({ origin: true }));
 
-app.post('/get-access-token', (request, response) => {
-  const { publicToken } = request.body;
+app.get('/get-access-token', (request, response) => {
+  const { publicToken } = request.query;
   client.exchangePublicToken(publicToken, function(error, result) {
     if (error !== null) {
       console.log('ERROR', error);
@@ -37,8 +37,8 @@ app.post('/get-access-token', (request, response) => {
   });
 });
 
-app.post('/get-transactions', (request, response) => {
-  const { accessToken } = request.body;
+app.get('/get-transactions', (request, response) => {
+  const { accessToken } = request.query;
   const today = new Date();
   const start = format(subMonths(today, 2), 'YYYY-MM-DD');
   const end = format(today, 'YYYY-MM-DD');
@@ -53,6 +53,10 @@ app.post('/get-transactions', (request, response) => {
     console.log('RESULT', result);
     response.status(200).send(result.transactions);
   });
+});
+
+app.get('/get-accounts', (request, response) => {
+  response.status(200).send('heyyyyy');
 });
 
 const firebasePathPatch = (app) => (req, res) => {
