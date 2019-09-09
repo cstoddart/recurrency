@@ -1,13 +1,35 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import { Link } from 'react-router-native';
+import React from "react";
+import { Text } from "react-native";
+import styled from "styled-components";
 
-import { StyledBottomNavigation } from './bottomNavigationStyles';
+import {
+  StyledBottomNavigation,
+  NavigationItem,
+  NavigationItemContent,
+} from "./bottomNavigationStyles";
+import Home from "../../../assets/home.svg";
+import Transactions from "../../../assets/transactions.svg";
+import Search from "../../../assets/search.svg";
 
 export const BottomNavigation = () => (
   <StyledBottomNavigation>
-    <Link to="/subscriptions"><Text>Subscriptions</Text></Link>
-    <Link to="/transactions"><Text>Transactions</Text></Link>
-    <Link to="/search"><Text>Search</Text></Link>
+    <NavigationItem to="/subscriptions">
+      <NavigationItemContent>
+        <Home width={20} height={20} />
+        <Text>Subscriptions</Text>
+      </NavigationItemContent>
+    </NavigationItem>
+    <NavigationItem to="/transactions">
+      <NavigationItemContent>
+        <Transactions width={20} height={20} />
+        <Text>Transactions</Text>
+      </NavigationItemContent>
+    </NavigationItem>
+    <NavigationItem to="/search">
+      <NavigationItemContent>
+        <Search width={20} height={20} />
+        <Text>Search</Text>
+      </NavigationItemContent>
+    </NavigationItem>
   </StyledBottomNavigation>
 );

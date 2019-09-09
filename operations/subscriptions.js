@@ -1,5 +1,9 @@
 import { format } from 'date-fns';
 
+function filterTransactions(transactions) {
+  return transactions.filter((transaction) => transaction.amount > 0);
+}
+
 function splitTransactionsByMonth(transactions) {
   const transactionsByMonth = {};
   transactions.forEach((transaction) => {
@@ -47,7 +51,8 @@ function findRecurringUniqueTransactions(uniqueTransactionsByMonth) {
 }
 
 export function identifySubscriptions(transactions) {
-  const transactionsByMonth = splitTransactionsByMonth(transactions);
+  const filteredTransactions = filterTransactions(transactions)
+  const transactionsByMonth = splitTransactionsByMonth(filteredTransactions);
   const uniqueTransactionsByMonth = findUniqueTransactions(transactionsByMonth);
   const subscriptions = findRecurringUniqueTransactions(uniqueTransactionsByMonth);
   return subscriptions;

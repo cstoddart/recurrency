@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
 
 import {
-  BottomNavigation,
-  TopNavigation,
   PageContainer,
+  TopNavigation,
+  PageContent,
+  Card,
+  BottomNavigation,
 } from '../ui';
+import {
+  SubscriptionList,
+  SubscriptionName,
+  SubscriptionAmount,
+} from './subscriptionsStyles';
 import { identifySubscriptions } from '../../operations';
+import MoneyIcon from '../../assets/money.svg';
 
 export class Subscriptions extends Component {
   componentDidMount() {
@@ -19,13 +23,26 @@ export class Subscriptions extends Component {
 
   render() {
     const { subscriptions } = this.props.context;
+    const formatNumber = new Intl.NumberFormat('en-us', {
+      style: 'currency',
+      currency: 'USD',
+    });
     return (
       <PageContainer>
-        <TopNavigation />
-        <Text>Subscriptions</Text>
-        {subscriptions.map((subscription) => (
-          <Text key={subscription.name}>{subscription.name}</Text>
-        ))}
+        <TopNavigation pageTitle="Subscriptions" />
+        <PageContent>
+          <SubscriptionList
+            data={subscriptions}
+            keyExtractor={(subscription) => subscription.name}
+            renderItem={({ item: subscription, index }) => (
+              <Card index={index}>
+                <MoneyIcon width={25} height={25} />
+                <SubscriptionName>{subscription.name}</SubscriptionName>
+                <SubscriptionAmount>{formatNumber.format(subscription.amount)}</SubscriptionAmount>
+              </Card>
+            )}
+          />
+        </PageContent>
         <BottomNavigation />
       </PageContainer>
     );

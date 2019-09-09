@@ -5,6 +5,8 @@ import {
   Route,
   Switch,
 } from 'react-router-native';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 
 import { context, initialState } from './context';
 import { Login } from './components/login';
