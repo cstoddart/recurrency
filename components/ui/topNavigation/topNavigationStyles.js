@@ -1,6 +1,9 @@
+import React from 'react';
 import styled from 'styled-components';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { Link } from 'react-router-native';
+
+import { Text } from '../text';
 
 export const StyledTopNavigation = styled.View`
   flex-direction: row;
@@ -16,7 +19,6 @@ export const SettingsLink = styled(Link)`
   left: 0;
 `;
 
-export const PageTitle = styled.Text`
+export const PageTitle = styled((props) => <Text {...props} bold />)`
   font-size: 20px;
-  font-weight: bold;
 `;

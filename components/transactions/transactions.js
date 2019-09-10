@@ -36,7 +36,7 @@ export const Transactions = (props) => {
           )}
         />
       </PageContent>
-      <BottomNavigation />
+      <BottomNavigation currentPath={props.history.location.pathname} />
     </PageContainer>
   );
 };

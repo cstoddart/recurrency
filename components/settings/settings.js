@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Text, TouchableOpacity, AsyncStorage } from 'react-native';
 
-import { BottomNavigation } from '../ui';
-
 export class Settings extends Component {
 	logout = () => {
 		AsyncStorage.removeItem('userId');
@@ -14,7 +12,6 @@ export class Settings extends Component {
 			<>
 				<Text>Settings</Text>
 				<TouchableOpacity onPress={this.logout}><Text>Logout</Text></TouchableOpacity>
-				<BottomNavigation />
 			</>
 		);
   }

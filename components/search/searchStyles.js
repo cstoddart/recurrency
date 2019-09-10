@@ -1,9 +1,11 @@
+import React from 'react';
 import styled from 'styled-components';
 import {
   FlatList,
-  Text,
   TextInput,
 } from 'react-native';
+
+import { Text } from '../ui';
 
 export const SearchInputContainer = styled.View`
   margin: 10px 15px;
@@ -22,12 +24,11 @@ export const SearchInput = styled.TextInput`
 
 export const SearchResultList = styled.FlatList``;
 
-export const SearchResultName = styled.Text`
+export const SearchResultName = styled((props) => <Text {...props} bold />)`
   flex: 1;
   margin-left: 15px;
-  font-weight: bold;
 `;
 
-export const SearchResultAmount = styled.Text`
+export const SearchResultAmount = styled((props) => <Text {...props} />)`
   margin-left: auto;
 `;

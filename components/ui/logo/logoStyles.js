@@ -1,7 +1,9 @@
+import React from 'react';
 import styled from 'styled-components';
 
-export const StyledLogo = styled.Text`
+import { Text } from '../text';
+
+export const StyledLogo = styled((props) => <Text {...props} bold />)`
   color: black;
-  font-weight: bold;
   font-size: 35;
 `;

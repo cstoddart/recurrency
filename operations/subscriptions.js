@@ -39,7 +39,7 @@ function findRecurringUniqueTransactions(uniqueTransactionsByMonth) {
   uniqueTransactionsByMonth[months[0]].forEach((currentTransaction) => {
     const transactionExistsInNextMonth = uniqueTransactionsByMonth[months[1]].find((transaction) => (
       transaction.name === currentTransaction.name
-      && transaction.amount === currentTransaction.amount
+      && transaction.amount === currentTransaction.amount // TODO: move this to function above
     ));
     const transactionExistsInThirdMonth = months[2] && uniqueTransactionsByMonth[months[2]].find((transaction) => (
       transaction.name === currentTransaction.name

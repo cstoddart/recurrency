@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 
+import { colors } from '../../constants';
 import {
   PageContainer,
   TopNavigation,
@@ -16,6 +17,8 @@ import {
 } from './searchStyles';
 import MoneyIcon from '../../assets/money.svg';
 import XIcon from '../../assets/x.svg';
+
+const { orange } = colors;
 
 export const Search = (props) => {
   const { transactions } = props.context;
@@ -34,8 +37,9 @@ export const Search = (props) => {
         <SearchInput
           onChange={({ nativeEvent: { text } }) => setQuery(text)}
           value={query}
+          selectionColor={orange}
         />
-        <XIcon width={15} height={15} onPress={() => setQuery('')} />
+        <XIcon width={15} height={15} onPress={() => setQuery('')} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} />
       </SearchInputContainer>
       <PageContent>
         <SearchResultList
@@ -50,7 +54,7 @@ export const Search = (props) => {
           )}
         />
       </PageContent>
-      <BottomNavigation />
+      <BottomNavigation currentPath={props.history.location.pathname} />
     </PageContainer>
   );
 };

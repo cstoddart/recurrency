@@ -17,22 +17,24 @@ import MoneyIcon from '../../assets/money.svg';
 
 export class Subscriptions extends Component {
   componentDidMount() {
+    const { context } = this.props;
     const subscriptions = identifySubscriptions(this.props.context.transactions);
-    this.props.context.updateContext({ subscriptions });
+    context.updateContext({ subscriptions });
   }
 
   render() {
-    const { subscriptions } = this.props.context;
+    const { context, history } = this.props;
     const formatNumber = new Intl.NumberFormat('en-us', {
       style: 'currency',
       currency: 'USD',
     });
+
     return (
       <PageContainer>
         <TopNavigation pageTitle="Subscriptions" />
         <PageContent>
           <SubscriptionList
-            data={subscriptions}
+            data={context.subscriptions}
             keyExtractor={(subscription) => subscription.name}
             renderItem={({ item: subscription, index }) => (
               <Card index={index}>
@@ -43,7 +45,7 @@ export class Subscriptions extends Component {
             )}
           />
         </PageContent>
-        <BottomNavigation />
+        <BottomNavigation currentPath={history.location.pathname} />
       </PageContainer>
     );
   }

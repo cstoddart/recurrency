@@ -7,7 +7,10 @@ import {
 } from 'react-router-native';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
+import * as Font from 'expo-font';
 
+import rubikRegular from './assets/fonts/rubikRegular.ttf';
+import rubikBold from './assets/fonts/rubikBold.ttf';
 import { context, initialState } from './context';
 import { Login } from './components/login';
 import { Home } from './components/home';
@@ -16,7 +19,7 @@ import { Transactions } from './components/transactions';
 import { Search } from './components/search';
 import { Settings } from './components/settings';
 
-/* -- Needed to supress annoying warning -- */
+/* -- Supress annoying console warning -- */
 YellowBox.ignoreWarnings(['Setting a timer']);
 const consoleClone = { ...console };
 console.warn = (message) => {
@@ -41,21 +44,33 @@ export default class App extends Component {
   state = {
     ...initialState,
     updateContext: (state) => this.setState(state),
+    fontLoaded: false,
   };
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      rubik: rubikRegular,
+      rubikBold,
+    });
+
+    this.setState({ fontLoaded: true });
+  }
 
   render() {
     return (
       <NativeRouter>
-        <context.Provider value={this.state}>
-          <Switch>
-            <RouteWithContext exact path="/" component={Home} />
-            <RouteWithContext path="/login" component={Login} />
-            <RouteWithContext path="/subscriptions" component={Subscriptions} />
-            <RouteWithContext path="/transactions" component={Transactions} />
-            <RouteWithContext path="/search" component={Search} />
-            <RouteWithContext path="/settings" component={Settings} />
-          </Switch>
-        </context.Provider>
+        {this.state.fontLoaded &&
+          <context.Provider value={this.state}>
+            <Switch>
+              <RouteWithContext exact path="/" component={Home} />
+              <RouteWithContext path="/login" component={Login} />
+              <RouteWithContext path="/subscriptions" component={Subscriptions} />
+              <RouteWithContext path="/transactions" component={Transactions} />
+              <RouteWithContext path="/search" component={Search} />
+              <RouteWithContext path="/settings" component={Settings} />
+            </Switch>
+          </context.Provider>
+        }
       </NativeRouter>
     );
   }

@@ -1,4 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
+
+import { Text } from '../ui';
 
 export const StyledLogin = styled.ImageBackground`
   height: 100%;
@@ -25,7 +28,7 @@ export const LoginButtonImage = styled.Image`
   margin-right: 10px;
 `;
 
-export const LoginButtonText = styled.Text`
+export const LoginButtonText = styled((props) => <Text {...props} />)`
   font-size: 16px;
 `;
 
@@ -45,11 +48,10 @@ export const LoginTextButton = styled.TouchableOpacity`
   margin-top: 20px;
 `;
 
-export const LoginText = styled.Text`
+export const LoginText = styled((props) => <Text {...props} />)`
   color: white;
   text-align: center;
 `;
 
-export const Bold = styled.Text`
-  font-weight: bold;
+export const Bold = styled((props) => <Text {...props} bold />)`
 `;

@@ -1,14 +1,17 @@
+import React from 'react';
 import styled from 'styled-components';
-import { FlatList, Text } from 'react-native';
+import { FlatList } from 'react-native';
+
+import { Text } from '../ui';
 
 export const SubscriptionList = styled.FlatList``;
 
-export const SubscriptionName = styled.Text`
+export const SubscriptionName = styled((props) => <Text {...props} bold />)`
   flex: 1;
   margin-left: 15px;
-  font-weight: bold;
+  margin-right: 15px;
 `;
 
-export const SubscriptionAmount = styled.Text`
+export const SubscriptionAmount = styled((props) => <Text {...props} bold />)`
   margin-left: auto;
 `;
