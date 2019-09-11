@@ -15,3 +15,7 @@ export const SubscriptionName = styled((props) => <Text {...props} bold />)`
 export const SubscriptionAmount = styled((props) => <Text {...props} bold />)`
   margin-left: auto;
 `;
+
+export const SubscriptionInterval = styled((props) => <Text {...props} medium />)`
+  font-size: 12px;
+`;

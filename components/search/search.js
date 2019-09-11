@@ -32,7 +32,7 @@ export const Search = (props) => {
   ));
   return (
     <PageContainer>
-      <TopNavigation pageTitle="Search" />
+      <TopNavigation pageTitle="Search" currentPath={props.history.location.pathname} />
       <SearchInputContainer>
         <SearchInput
           onChange={({ nativeEvent: { text } }) => setQuery(text)}
@@ -46,7 +46,7 @@ export const Search = (props) => {
           data={searchResults}
           keyExtractor={(transaction, index) => `${transaction.name}${index}`}
           renderItem={({ item: transaction, index }) => (
-            <Card index={index}>
+            <Card>
               <MoneyIcon width={25} height={25} />
               <SearchResultName>{transaction.name}</SearchResultName>
               <SearchResultAmount>{formatNumber.format(transaction.amount)}</SearchResultAmount>

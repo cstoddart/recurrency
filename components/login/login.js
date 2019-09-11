@@ -9,7 +9,7 @@ import facebookIcon from '../../assets/facebook.png';
 import googleIcon from '../../assets/google.png';
 import {
   Logo,
-  Row,
+  Flex,
 } from '../ui';
 import {
   StyledLogin,
@@ -57,7 +57,7 @@ export class Login extends Component {
       <StyledLogin source={piggyBank}>
         <Logo />
         <LoginButtons>
-          <Row>
+          <Flex>
             <FacebookButton onPress={this.handleLogin(loginWithFacebook)}>
               <LoginButtonImage source={facebookIcon} />
               <LoginButtonText>Continue</LoginButtonText>
@@ -66,7 +66,7 @@ export class Login extends Component {
               <LoginButtonImage source={googleIcon} />
               <LoginButtonText>Continue</LoginButtonText>
             </GoogleButton>
-          </Row>
+          </Flex>
           <LoginButton onPress={this.handleLogin(loginWithFirebase)}>
             <LoginButtonText>Sign Me Up!</LoginButtonText>
           </LoginButton>

@@ -14,7 +14,7 @@ export const StyledTopNavigation = styled.View`
   padding-bottom: 10px;
 `;
 
-export const SettingsLink = styled(Link)`
+export const SettingsLink = styled((props) => <Link {...props} underlayColor="#ffffff00" />)`
   position: absolute;
   left: 0;
 `;

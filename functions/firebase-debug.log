@@ -1,0 +1,229 @@
+[debug] [2019-09-11T02:07:02.378Z] ----------------------------------------------------------------------
+[debug] [2019-09-11T02:07:02.379Z] Command:       /usr/local/Cellar/node/12.8.1/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2019-09-11T02:07:02.379Z] CLI Version:   7.3.1
+[debug] [2019-09-11T02:07:02.379Z] Platform:      darwin
+[debug] [2019-09-11T02:07:02.379Z] Node Version:  v12.8.1
+[debug] [2019-09-11T02:07:02.381Z] Time:          Tue Sep 10 2019 21:07:02 GMT-0500 (Central Daylight Time)
+[debug] [2019-09-11T02:07:02.381Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-09-11T02:07:02.391Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-09-11T02:07:02.391Z] > authorizing via signed-in user
+[debug] [2019-09-11T02:07:02.391Z] [iam] checking project recurrency-60f36 for permissions ["firebase.projects.get"]
+[debug] [2019-09-11T02:07:02.392Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-09-11T02:07:02.393Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-09-11T02:07:02.526Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-11T02:07:02.544Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/recurrency-60f36:testIamPermissions  
+
+[debug] [2019-09-11T02:07:02.808Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-11T02:07:02.809Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/recurrency-60f36  
+ 
+[debug] [2019-09-11T02:07:03.104Z] <<< HTTP RESPONSE 200
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/Users/chris/projects/recurrency/functions" for Cloud Functions...
+[debug] [2019-09-11T02:07:03.570Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/chris/projects/recurrency/functions","node_version":"12.8.1"}
+[debug] [2019-09-11T02:07:03.570Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-11T02:07:03.572Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-11T02:07:03.573Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:07:03.573Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[info] ✔  functions[plaid]: http function initialized (http://localhost:5000/recurrency-60f36/us-central1/plaid).
+[debug] [2019-09-11T02:07:30.843Z] Accepted request GET /recurrency-60f36/us-central1/plaid/get-accounts --> plaid
+[debug] [2019-09-11T02:07:31.033Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/chris/projects/recurrency/functions","node_version":"12.8.1"}
+[info] i  functions: Beginning execution of "plaid"
+[debug] [2019-09-11T02:07:31.033Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-11T02:07:31.036Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-11T02:07:31.037Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:07:31.037Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:07:31.306Z] [runtime-status] Trigger "plaid" has been found, beginning invocation! {}
+[debug] [2019-09-11T02:07:31.306Z] [runtime-status]  {"httpsTrigger":{},"name":"plaid","entryPoint":"plaid"}
+[debug] [2019-09-11T02:07:31.307Z] [runtime-status] Running plaid in mode HTTPS {}
+[debug] [2019-09-11T02:07:31.311Z] {"socketPath":"/var/folders/dv/9pnkn0n907g57zsk56jmvyd00000gn/T/firebase_emulator_invocation_72565.sock"}
+[debug] [2019-09-11T02:07:31.313Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/dv/9pnkn0n907g57zsk56jmvyd00000gn/T/firebase_emulator_invocation_72565.sock"}
+[debug] [2019-09-11T02:07:31.318Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-11T02:07:31.326Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "plaid" in ~1s
+[debug] [2019-09-11T02:08:59.329Z] File /Users/chris/projects/recurrency/functions/index.js changed, reloading triggers
+[debug] [2019-09-11T02:09:00.500Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/chris/projects/recurrency/functions","node_version":"12.8.1"}
+[debug] [2019-09-11T02:09:00.500Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-11T02:09:00.502Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-11T02:09:00.503Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:09:00.503Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:09:20.957Z] File /Users/chris/projects/recurrency/functions/index.js changed, reloading triggers
+[debug] [2019-09-11T02:09:22.129Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/chris/projects/recurrency/functions","node_version":"12.8.1"}
+[debug] [2019-09-11T02:09:22.129Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-11T02:09:22.131Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-11T02:09:22.132Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:09:22.132Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:09:27.857Z] File /Users/chris/projects/recurrency/functions/index.js changed, reloading triggers
+[debug] [2019-09-11T02:09:29.035Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/chris/projects/recurrency/functions","node_version":"12.8.1"}
+[debug] [2019-09-11T02:09:29.035Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-11T02:09:29.037Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-11T02:09:29.038Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:09:29.038Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:09:40.566Z] Accepted request GET /recurrency-60f36/us-central1/plaid/get-accounts --> plaid
+[debug] [2019-09-11T02:09:40.750Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/chris/projects/recurrency/functions","node_version":"12.8.1"}
+[info] i  functions: Beginning execution of "plaid"
+[debug] [2019-09-11T02:09:40.751Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-11T02:09:40.753Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-11T02:09:40.754Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:09:40.755Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:09:41.024Z] [runtime-status] Trigger "plaid" has been found, beginning invocation! {}
+[debug] [2019-09-11T02:09:41.024Z] [runtime-status]  {"httpsTrigger":{},"name":"plaid","entryPoint":"plaid"}
+[debug] [2019-09-11T02:09:41.024Z] [runtime-status] Running plaid in mode HTTPS {}
+[debug] [2019-09-11T02:09:41.028Z] {"socketPath":"/var/folders/dv/9pnkn0n907g57zsk56jmvyd00000gn/T/firebase_emulator_invocation_72597.sock"}
+[debug] [2019-09-11T02:09:41.029Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/dv/9pnkn0n907g57zsk56jmvyd00000gn/T/firebase_emulator_invocation_72597.sock"}
+[debug] [2019-09-11T02:09:41.033Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-11T02:09:41.039Z] [runtime-status] Ephemeral server survived. {}
+[info] >  RESULT undefined
+[info] i  functions: Finished "plaid" in ~1s
+[debug] [2019-09-11T02:16:59.552Z] Accepted request GET /recurrency-60f36/us-central1/plaid/get-access-token?publicToken=56080b252cdeed44550aa6a24517d9 --> plaid
+[debug] [2019-09-11T02:16:59.738Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/chris/projects/recurrency/functions","node_version":"12.8.1"}
+[info] i  functions: Beginning execution of "plaid"
+[debug] [2019-09-11T02:16:59.738Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-11T02:16:59.742Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-11T02:16:59.743Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:16:59.744Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:16:59.984Z] [runtime-status] Trigger "plaid" has been found, beginning invocation! {}
+[debug] [2019-09-11T02:16:59.984Z] [runtime-status]  {"httpsTrigger":{},"name":"plaid","entryPoint":"plaid"}
+[debug] [2019-09-11T02:16:59.984Z] [runtime-status] Running plaid in mode HTTPS {}
+[debug] [2019-09-11T02:16:59.989Z] {"socketPath":"/var/folders/dv/9pnkn0n907g57zsk56jmvyd00000gn/T/firebase_emulator_invocation_72603.sock"}
+[debug] [2019-09-11T02:16:59.989Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/dv/9pnkn0n907g57zsk56jmvyd00000gn/T/firebase_emulator_invocation_72603.sock"}
+[debug] [2019-09-11T02:16:59.994Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-11T02:16:59.999Z] [runtime-status] Ephemeral server survived. {}
+[info] >  ERROR PlaidError: INVALID_PUBLIC_TOKEN
+[info] >      at handleApiResponse (/Users/chris/projects/recurrency/functions/node_modules/plaid/lib/plaidRequest.js:47:19)
+[info] >      at Request._callback (/Users/chris/projects/recurrency/functions/node_modules/plaid/lib/plaidRequest.js:91:7)
+[info] >      at Request.self.callback (/Users/chris/projects/recurrency/functions/node_modules/request/request.js:185:22)
+[info] >      at Request.emit (events.js:203:13)
+[info] >      at Request.<anonymous> (/Users/chris/projects/recurrency/functions/node_modules/request/request.js:1161:10)
+[info] >      at Request.emit (events.js:203:13)
+[info] >      at IncomingMessage.<anonymous> (/Users/chris/projects/recurrency/functions/node_modules/request/request.js:1083:12)
+[info] >      at Object.onceWrapper (events.js:291:20)
+[info] >      at IncomingMessage.emit (events.js:208:15)
+[info] >      at endReadableNT (_stream_readable.js:1168:12)
+[info] >      at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+[info] >    name: 'PlaidError',
+[info] >    display_message: null,
+[info] >    error_code: 'INVALID_PUBLIC_TOKEN',
+[info] >    error_message: 'provided public token is in an invalid format. expected format: public-<environment>-<identifier>',
+[info] >    error_type: 'INVALID_INPUT',
+[info] >    request_id: 'Xo5ems5Nll6Y6TF',
+[info] >    suggested_action: null,
+[info] >    status_code: 400
+[info] >  }
+[info] i  functions: Finished "plaid" in ~1s
+[debug] [2019-09-11T02:23:12.319Z] Accepted request GET /recurrency-60f36/us-central1/plaid/get-accounts?accessToken=access-sandbox-59f84e61-92d2-4999-a32a-974da5b62994 --> plaid
+[debug] [2019-09-11T02:23:12.614Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/chris/projects/recurrency/functions","node_version":"12.8.1"}
+[info] i  functions: Beginning execution of "plaid"
+[debug] [2019-09-11T02:23:12.614Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-11T02:23:12.617Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-11T02:23:12.618Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:23:12.619Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:23:13.158Z] [runtime-status] Trigger "plaid" has been found, beginning invocation! {}
+[debug] [2019-09-11T02:23:13.158Z] [runtime-status]  {"httpsTrigger":{},"name":"plaid","entryPoint":"plaid"}
+[debug] [2019-09-11T02:23:13.158Z] [runtime-status] Running plaid in mode HTTPS {}
+[debug] [2019-09-11T02:23:13.162Z] {"socketPath":"/var/folders/dv/9pnkn0n907g57zsk56jmvyd00000gn/T/firebase_emulator_invocation_72626.sock"}
+[debug] [2019-09-11T02:23:13.163Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/dv/9pnkn0n907g57zsk56jmvyd00000gn/T/firebase_emulator_invocation_72626.sock"}
+[debug] [2019-09-11T02:23:13.168Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-11T02:23:13.173Z] [runtime-status] Ephemeral server survived. {}
+[info] >  RESULT {
+[info] >    accounts: [
+[info] >      {
+[info] >        account_id: 'Q4xkWrxB4DcW7ND3o3Bph5NVnwdgBPip8g3K8',
+[info] >        balances: [Object],
+[info] >        mask: '0000',
+[info] >        name: 'Plaid Checking',
+[info] >        official_name: 'Plaid Gold Standard 0% Interest Checking',
+[info] >        subtype: 'checking',
+[info] >        type: 'depository'
+[info] >      },
+[info] >      {
+[info] >        account_id: 'Z1QJjPQ71WHbz3NemelqIB9aAnb6VKigKEr75',
+[info] >        balances: [Object],
+[info] >        mask: '1111',
+[info] >        name: 'Plaid Saving',
+[info] >        official_name: 'Plaid Silver Standard 0.1% Interest Saving',
+[info] >        subtype: 'savings',
+[info] >        type: 'depository'
+[info] >      },
+[info] >      {
+[info] >        account_id: 'M3rmZyrq3DiL7PBmqmVRF14zRoN79qi9MWeQK',
+[info] >        balances: [Object],
+[info] >        mask: '2222',
+[info] >        name: 'Plaid CD',
+[info] >        official_name: 'Plaid Bronze Standard 0.2% Interest CD',
+[info] >        subtype: 'cd',
+[info] >        type: 'depository'
+[info] >      },
+[info] >      {
+[info] >        account_id: '1kNawzNZkEUDrB89p95AuQ6xGnBN5pu5JkZMk',
+[info] >        balances: [Object],
+[info] >        mask: '3333',
+[info] >        name: 'Plaid Credit Card',
+[info] >        official_name: 'Plaid Diamond 12.5% APR Interest Credit Card',
+[info] >        subtype: 'credit card',
+[info] >        type: 'credit'
+[info] >      },
+[info] >      {
+[info] >        account_id: 'LBK9bmKlBDf1yPqelexoTGe1MBPLbNcPrxlNQ',
+[info] >        balances: [Object],
+[info] >        mask: '4444',
+[info] >        name: 'Plaid Money Market',
+[info] >        official_name: 'Plaid Platinum Standard 1.85% Interest Money Market',
+[info] >        subtype: 'money market',
+[info] >        type: 'depository'
+[info] >      },
+[info] >      {
+[info] >        account_id: 'pxKeXqKwxntxGQdjqjoaflq6zem4bKiL1vE5g',
+[info] >        balances: [Object],
+[info] >        mask: '5555',
+[info] >        name: 'Plaid IRA',
+[info] >        official_name: null,
+[info] >        subtype: 'ira',
+[info] >        type: 'investment'
+[info] >      },
+[info] >      {
+[info] >        account_id: 'o3q7LlqE3ni3jVwelepWI8P5rW1lLBuRlZkND',
+[info] >        balances: [Object],
+[info] >        mask: '6666',
+[info] >        name: 'Plaid 401k',
+[info] >        official_name: null,
+[info] >        subtype: '401k',
+[info] >        type: 'investment'
+[info] >      },
+[info] >      {
+[info] >        account_id: 'gyn3JEn9yWf9BpkZvZjJHv3PbL61yZFgm64KJ',
+[info] >        balances: [Object],
+[info] >        mask: '7777',
+[info] >        name: 'Plaid Student Loan',
+[info] >        official_name: null,
+[info] >        subtype: 'student',
+[info] >        type: 'loan'
+[info] >      }
+[info] >    ],
+[info] >    item: {
+[info] >      available_products: [
+[info] >        'assets',
+[info] >        'balance',
+[info] >        'credit_details',
+[info] >        'identity',
+[info] >        'income',
+[info] >        'liabilities'
+[info] >      ],
+[info] >      billed_products: [ 'auth', 'transactions' ],
+[info] >      error: null,
+[info] >      institution_id: 'ins_1',
+[info] >      item_id: 'BnGm5pGPnbiaWlqNpN97TNgpNXrxlJiwon4JL',
+[info] >      webhook: 'http://google.com'
+[info] >    },
+[info] >    request_id: 'WuJ38DTGWKSHGBw',
+[info] >    status_code: 200
+[info] >  }
+[info] i  functions: Finished "plaid" in ~1s
+[debug] [2019-09-11T02:45:15.711Z] File /Users/chris/projects/recurrency/functions/keys.js changed, reloading triggers
+[debug] [2019-09-11T02:45:17.078Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/chris/projects/recurrency/functions","node_version":"12.8.1"}
+[debug] [2019-09-11T02:45:17.079Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-11T02:45:17.081Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-11T02:45:17.082Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-11T02:45:17.083Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/Users/chris/projects/recurrency/functions/node_modules/firebase-functions/lib/index.js"}

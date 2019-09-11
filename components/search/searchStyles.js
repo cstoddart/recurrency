@@ -29,6 +29,6 @@ export const SearchResultName = styled((props) => <Text {...props} bold />)`
   margin-left: 15px;
 `;
 
-export const SearchResultAmount = styled((props) => <Text {...props} />)`
+export const SearchResultAmount = styled((props) => <Text {...props} bold />)`
   margin-left: auto;
 `;

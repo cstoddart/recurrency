@@ -1,17 +1,20 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 
+import { colors } from '../../../constants';
 import {
   StyledTopNavigation,
   SettingsLink,
   PageTitle,
 } from './topNavigationStyles';
-import Gear from '../../../assets/gear.svg';
+import { GearIcon } from '../icons';
 
-export const TopNavigation = ({ pageTitle }) => (
+const { black, orange } = colors;
+
+export const TopNavigation = ({ pageTitle, currentPath }) => (
   <StyledTopNavigation>
     <SettingsLink to="/settings">
-      <Gear height="30" width="30" />
+      <GearIcon height="30" width="30" color={currentPath.includes('settings') ? orange : black} />
     </SettingsLink>
     <PageTitle>{pageTitle}</PageTitle>
   </StyledTopNavigation>

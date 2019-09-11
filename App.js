@@ -10,6 +10,7 @@ import 'intl/locale-data/jsonp/en';
 import * as Font from 'expo-font';
 
 import rubikRegular from './assets/fonts/rubikRegular.ttf';
+import rubikMedium from './assets/fonts/rubikMedium.ttf';
 import rubikBold from './assets/fonts/rubikBold.ttf';
 import { context, initialState } from './context';
 import { Login } from './components/login';
@@ -50,6 +51,7 @@ export default class App extends Component {
   async componentDidMount() {
     await Font.loadAsync({
       rubik: rubikRegular,
+      rubikMedium,
       rubikBold,
     });
 

@@ -8,5 +8,5 @@ const { black } = colors;
 
 export const Text = styled((props) => <ReactNativeText {...props} />)`
   color: ${({ color }) => color || black};
-  font-family: ${({ bold }) => bold ? 'rubikBold' : 'rubik'};
+  font-family: ${({ bold, medium }) => bold ? 'rubikBold' : medium ? 'rubikMedium' : 'rubik'};
 `;

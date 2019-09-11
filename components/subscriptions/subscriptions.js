@@ -6,11 +6,14 @@ import {
   PageContent,
   Card,
   BottomNavigation,
+  Flex,
+  Text,
 } from '../ui';
 import {
   SubscriptionList,
   SubscriptionName,
   SubscriptionAmount,
+  SubscriptionInterval,
 } from './subscriptionsStyles';
 import { identifySubscriptions } from '../../operations';
 import MoneyIcon from '../../assets/money.svg';
@@ -31,16 +34,19 @@ export class Subscriptions extends Component {
 
     return (
       <PageContainer>
-        <TopNavigation pageTitle="Subscriptions" />
+        <TopNavigation pageTitle="Subscriptions" currentPath={history.location.pathname} />
         <PageContent>
           <SubscriptionList
             data={context.subscriptions}
             keyExtractor={(subscription) => subscription.name}
             renderItem={({ item: subscription, index }) => (
-              <Card index={index}>
+              <Card>
                 <MoneyIcon width={25} height={25} />
                 <SubscriptionName>{subscription.name}</SubscriptionName>
-                <SubscriptionAmount>{formatNumber.format(subscription.amount)}</SubscriptionAmount>
+                <Flex align="flex-end" column>
+                  <SubscriptionAmount>{formatNumber.format(subscription.amount)}</SubscriptionAmount>
+                  <SubscriptionInterval>30 Days</SubscriptionInterval>
+                </Flex>
               </Card>
             )}
           />

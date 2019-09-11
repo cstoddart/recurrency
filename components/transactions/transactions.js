@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
+import { format, isToday, isYesterday } from 'date-fns';
 
 import {
   PageContainer,
@@ -9,6 +11,7 @@ import {
 } from '../ui';
 import {
   TransactionList,
+  TransactionDate,
   TransactionName,
   TransactionAmount,
 } from './transactionsStyles';
@@ -20,19 +23,31 @@ export const Transactions = (props) => {
     style: 'currency',
     currency: 'USD',
   });
+
   return (
     <PageContainer>
-      <TopNavigation pageTitle="Transactions" />
+      <TopNavigation pageTitle="Transactions" currentPath={props.history.location.pathname} />
       <PageContent>
         <TransactionList
           data={transactions}
           keyExtractor={(transaction, index) => `${transaction.name}${index}`}
           renderItem={({ item: transaction, index }) => (
-            <Card index={index}>
-              <MoneyIcon width={25} height={25} />
-              <TransactionName>{transaction.name}</TransactionName>
-              <TransactionAmount>{formatNumber.format(transaction.amount)}</TransactionAmount>
-            </Card>
+            <View>
+              {(!transactions[index - 1] || transaction.date !== transactions[index - 1].date) && 
+                <TransactionDate>
+                  {isToday(transaction.date) ? 
+                    `Today, ${format(transaction.date, 'MMM Do')}` 
+                  : isYesterday(transaction.date) ? 
+                    `Yesterday, ${format(transaction.date, 'MMM Do')}`
+                  : format(transaction.date, 'dddd, MMM Do')}
+                </TransactionDate>
+              }
+              <Card>
+                <MoneyIcon width={25} height={25} />
+                <TransactionName>{transaction.name}</TransactionName>
+                <TransactionAmount>{formatNumber.format(transaction.amount)}</TransactionAmount>
+              </Card>
+            </View>
           )}
         />
       </PageContent>

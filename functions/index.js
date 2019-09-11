@@ -56,7 +56,11 @@ app.get('/get-transactions', (request, response) => {
 });
 
 app.get('/get-accounts', (request, response) => {
-  response.status(200).send('heyyyyy');
+  const { accessToken } = request.query;
+  client.getAccounts(accessToken, (error, result) => {
+    console.log('RESULT', result);
+    response.status(200).send(result);
+  })
 });
 
 const firebasePathPatch = (app) => (req, res) => {

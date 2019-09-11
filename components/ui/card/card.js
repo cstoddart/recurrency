@@ -5,10 +5,7 @@ export const Card = styled.View`
   background-color: white;
   padding: 20px;
   border-radius: 20px;
-  margin-top: ${(props) => props.index === 0 ? '10px' : '0'};
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: 10px;
+  margin: 5px 15px;
   elevation: 3;
   flex-direction: row;
   align-items: center;
