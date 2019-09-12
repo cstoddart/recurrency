@@ -2,11 +2,12 @@ const functions = require('firebase-functions');
 const express = require('express');
 const cors = require('cors');
 const plaid = require('plaid');
-const { format, subMonths } = require('date-fns');
+const { format, subDays } = require('date-fns');
 
 const {
   plaidClientId,
-  plaidSandboxSecret,
+  // plaidSandboxSecret,
+  plaidDevelopmentSecret,
   plaidPublicKey,
 } = require('./keys');
 
@@ -14,9 +15,11 @@ const app = express();
 
 const client = new plaid.Client(
   plaidClientId,
-  plaidSandboxSecret,
+  // plaidSandboxSecret,
+  plaidDevelopmentSecret,
   plaidPublicKey,
-  plaid.environments.sandbox
+  // plaid.environments.sandbox
+  plaid.environments.development
 );
 
 app.use(cors({ origin: true }));
@@ -40,7 +43,8 @@ app.get('/get-access-token', (request, response) => {
 app.get('/get-transactions', (request, response) => {
   const { accessToken } = request.query;
   const today = new Date();
-  const start = format(subMonths(today, 2), 'YYYY-MM-DD');
+  // const start = format(subMonths(today, 2), 'YYYY-MM-DD');
+  const start = format(subDays(today, 60), 'YYYY-MM-DD');
   const end = format(today, 'YYYY-MM-DD');
   client.getTransactions(accessToken, start, end, {
     count: 250,

@@ -11,11 +11,15 @@ export const SearchInputContainer = styled.View`
   margin: 10px 15px;
   background-color: #efefef;
   padding: 10px 15px;
-  elevation: 3;
   border-radius: 20px;
   border: 1px solid #efefef;
   flex-direction: row;
   align-items: center;
+  elevation: 3;
+  shadowColor: #000000;
+  shadowOffset: 1px;
+  shadowOpacity: 0.5;
+  shadowRadius: 2px;
 `;
 
 export const SearchInput = styled.TextInput`

@@ -51,6 +51,7 @@
     "packagerOpts": {
       "config": "metro.config.js",
       "sourceExts": ["js", "jsx", "svg"]
-    }
+    },
+    "primaryColor": "#ff4700"
   }
 }

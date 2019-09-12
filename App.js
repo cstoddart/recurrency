@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { YellowBox } from 'react-native';
+import {
+  YellowBox,
+  SafeAreaView,
+  StatusBar,
+  View,
+} from 'react-native';
 import {
   NativeRouter,
   Route,
@@ -60,20 +65,23 @@ export default class App extends Component {
 
   render() {
     return (
-      <NativeRouter>
-        {this.state.fontLoaded &&
-          <context.Provider value={this.state}>
-            <Switch>
-              <RouteWithContext exact path="/" component={Home} />
-              <RouteWithContext path="/login" component={Login} />
-              <RouteWithContext path="/subscriptions" component={Subscriptions} />
-              <RouteWithContext path="/transactions" component={Transactions} />
-              <RouteWithContext path="/search" component={Search} />
-              <RouteWithContext path="/settings" component={Settings} />
-            </Switch>
-          </context.Provider>
-        }
-      </NativeRouter>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
+        <StatusBar barStyle="dark-content" />
+        <NativeRouter>
+          {this.state.fontLoaded &&
+            <context.Provider value={this.state}>
+              <Switch>
+                <RouteWithContext exact path="/" component={Home} />
+                <RouteWithContext path="/login" component={Login} />
+                <RouteWithContext path="/subscriptions" component={Subscriptions} />
+                <RouteWithContext path="/transactions" component={Transactions} />
+                <RouteWithContext path="/search" component={Search} />
+                <RouteWithContext path="/settings" component={Settings} />
+              </Switch>
+            </context.Provider>
+          }
+        </NativeRouter>
+      </SafeAreaView>
     );
   }
 }
